@@ -190,4 +190,4 @@ async def obf_command(ctx, *, text_code: str = None):
 
 if __name__ == "__main__":
     threading.Thread(target=run_server).start()
-    bot.run(TOKEN)
+    bot.run(os.getenv("TOKEN"))
