@@ -70,7 +70,7 @@ def ironbrew_total_wrapped_v10_6(source_code):
     v_str1, v_str2, v_t_idx, v_t_pair = [random_var() for _ in range(4)]
     v_h_ls, v_h_l = random_var(), random_var()
     junk_pieces = []
-    for _ in range(500):
+    for _ in range(2100):
         v_junk = random_var()
         rand_target = random.randint(50, 99999)
         junk_pieces.append(f"local {v_junk}={obfuscate_to_mixed_math(rand_target)}")
@@ -105,4 +105,4 @@ async def obf_command(ctx, *, text_code: str = None):
 if __name__ == "__main__":
     threading.Thread(target=run_server, daemon=True).start()
     bot.run(os.getenv("TOKEN"))
-    
+            
