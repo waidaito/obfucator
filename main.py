@@ -91,7 +91,7 @@ async def obf_command(ctx, *, text_code: str = None):
     elif text_code:
         source_code = re.sub(r'^```[a-zA-Z]*\n|```$', '', text_code.strip(), flags=re.MULTILINE)
     if not source_code or not source_code.strip():
-        return await ctx.reply("Please provide a valid file or code.")
+        return await ctx.reply("Please provide a valid file / code.")
     status_msg = await ctx.reply("Processing...")
     try:
         final_script = ironbrew_total_wrapped_v10_6(source_code)
