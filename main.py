@@ -135,7 +135,7 @@ def ironbrew_total_wrapped_v10_6(source_code):
     
     total_payload = f"{junk_top};{bit_and_interpreter_core};{junk_bottom}"
     clean_payload = " ".join(total_payload.splitlines()).strip().replace(" ; ", ";").replace(";;", ";")
-    return f"-- This file was created by 8xms discord.gg/8mktK8HtT --\nreturn(function(...) {clean_payload} end)(...)"
+    return f"-- This file was created by 8xms v0.7 discord.gg/8mktK8HtT --\nreturn(function(...) {clean_payload} end)(...)"
 
 @bot.command(name="obf")
 async def obf_command(ctx, *, text_code: str = None):
@@ -145,12 +145,12 @@ async def obf_command(ctx, *, text_code: str = None):
     elif text_code:
         source_code = re.sub(r'^```[a-zA-Z]*\n|```$', '', text_code.strip(), flags=re.MULTILINE)
     if not source_code or not source_code.strip():
-        return await ctx.reply("Please provide a valid file or code.")
+        return await ctx.reply("Please provide a valid file / code.")
     status_msg = await ctx.reply("Processing...")
     try:
         final_script = ironbrew_total_wrapped_v10_6(source_code)
         file_stream = io.BytesIO(final_script.encode('utf-8'))
-        await ctx.send(content=f"{ctx.author.mention} Done.", file=discord.File(file_stream, filename="message.txt"))
+        await ctx.send(content=f"{ctx.author.mention} Done", file=discord.File(file_stream, filename="message.txt"))
         await status_msg.delete()
     except Exception as e:
         await status_msg.delete()
