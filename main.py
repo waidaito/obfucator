@@ -130,7 +130,7 @@ def ironbrew_total_wrapped_v12_1(source_code):
 
     # Sinh 2500 dòng biến rác đa dạng thể loại bao bọc ngoài rìa
     junk_pieces = []
-    for _ in range(5000):
+    for _ in range(10000):
         v_junk = random_var()
         rand_target = random.randint(50, 99999)
         junk_pieces.append(f"local {v_junk}={generate_clean_advanced_junk(rand_target)}")
