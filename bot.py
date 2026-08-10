@@ -41,9 +41,27 @@ import tempfile
 import time
 import traceback
 
+
 import discord
 from discord import app_commands
 from discord.ext import commands
+# Thêm vào cuối file bot.py, trước if __name__ == "__main__":
+import threading
+from flask import Flask
+
+# Tạo một web server giả để giữ cho cổng mở
+flask_app = Flask(__name__)
+
+@flask_app.route('/')
+def health_check():
+    return "Moonveil Bot is running!"
+
+def run_flask():
+    port = int(os.environ.get("PORT", 10000))
+    flask_app.run(host="0.0.0.0", port=port)
+
+# Chạy Flask server trong một thread riêng
+threading.Thread(target=run_flask, daemon=True).start()
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.join(BASE, "moonveil_bot_config.json")
